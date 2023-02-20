@@ -1,3 +1,4 @@
+ <!-- eslint-disable -->
 <template>
   <div class="hello">
     <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
@@ -5,6 +6,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 export default {
   name: 'HelloWorld',
@@ -14,10 +16,10 @@ export default {
   data(){
     return {
       editor: Editor,
-                editorData: '<p>Content of the editor.</p><div class="testing">Tag checking </div>',
-                editorConfig: {
-                    // The configuration of the editor.
-                }
+      editorData: '<p>First paragraph</p><div class="testing">Second div with class<span> updated</span></div>',
+      editorConfig: {
+          // The configuration of the editor.
+      }
     }
   }
 }
@@ -38,5 +40,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.testing{
+  background-color: red;
+  color:#fff;
 }
 </style>

@@ -1,3 +1,4 @@
+ <!-- eslint-disable  -->
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
@@ -6,6 +7,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
