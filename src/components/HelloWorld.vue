@@ -16,33 +16,54 @@ export default {
   data(){
     return {
       editor: Editor,
-      editorData: '<p>First paragraph</p><div class="testing">Second div with class<span> updated</span></div>',
+      editorData: `<p>First paragraph</p>
+      <div class="testing">Second div with class<span> updated</span>
+        </div>
+        <ol class="order-list"><li>first</li><li>second</li></ol>
+        `
+        ,
       editorConfig: {
           // The configuration of the editor.
+          htmlSupport: {
+          allow: [
+            {
+              name: 'div',
+              classes: true
+            },
+            {
+              name: 'span',
+              classes: true
+            },
+            {
+              name: 'li',
+              classes: true
+            },
+            {
+              name: 'ol',
+              classes: true
+            }
+          ]
       }
     }
+  }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 h3 {
   margin: 40px 0 0;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 a {
   color: #42b983;
 }
 .testing{
   background-color: red;
   color:#fff;
+}
+.order-list{
+  display: flex;
 }
 </style>
