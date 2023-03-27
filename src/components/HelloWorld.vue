@@ -1,51 +1,74 @@
- <!-- eslint-disable -->
+<!-- eslint-disable -->
 <template>
   <div class="hello">
-    <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
+    <ckeditor
+      :editor="editor"
+      v-model="editorData"
+      :config="editorConfig"
+    ></ckeditor>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-import Editor from 'ckeditor5-custom-build/build/ckeditor';
+import Editor from 'ckeditor5-custom-build/build/ckeditor'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
-  data(){
+  data() {
     return {
       editor: Editor,
-      editorData: `<p>First paragraph</p>
-      <div class="testing">Second div with class<span> updated</span>
-        </div>
-        <ol class="order-list"><li>first</li><li>second</li></ol>
-        `
-        ,
+      editorData: `
+        <ol class="eight period-andList">
+            <li>First Item</li>
+            <li>Second Item</li>
+            <li>Third Item</li>
+        </ol>
+        `,
       editorConfig: {
-          // The configuration of the editor.
-          htmlSupport: {
+        // The configuration of the editor.
+        htmlSupport: {
           allow: [
-            {
-              name: 'div',
-              classes: true
-            },
-            {
-              name: 'span',
-              classes: true
-            },
-            {
-              name: 'li',
-              classes: true
-            },
-            {
-              name: 'ol',
-              classes: true
-            }
-          ]
+							{
+								name: 'div',
+								attributes: true,
+								classes: true,
+								id:true
+							},
+							{
+								name: 'span',
+								attributes: true,
+								classes: true
+							},
+							{
+								name: 'p',
+								attributes: true,
+								classes: true
+							},
+							{
+								name: 'li',
+								attributes: true,
+								classes: true
+							},
+							{
+								name: 'ol',
+								attributes: true,
+								classes: true 
+							},
+							{
+								name: 'b',
+								attributes: true,
+								classes: true 
+							},
+							{
+								name: 'i'
+							},
+						]
+        }
       }
     }
-  }
   }
 }
 </script>
@@ -59,11 +82,59 @@ h3 {
 a {
   color: #42b983;
 }
-.testing{
+.testing {
   background-color: red;
-  color:#fff;
+  color: #fff;
 }
-.order-list{
+/* .order-list{
   display: flex;
-}
+} */
+
+
+.period-andList > li:nth-last-child(2)::after {
+		content: '; and';
+	}
+
+	.period-andList > li:last-child::after {
+		content: '.';
+	}
+
+	.period-andList > li:not(:nth-last-child(2)):not(:last-child):not(span)::after {
+		content: ';';
+	}
+
+
+  ol.four,
+	ol.eight {
+		counter-reset: four;
+		list-style-type: none;
+	}
+
+	ol.four > li:before,
+	ol.eight > li:before {
+		position: absolute;
+		counter-increment: four;
+		content: '(' counter(four, lower-roman) ')';
+
+		margin-left: -2.5em;
+		margin-right: 1em;
+	}
+
+  
+	ol.eight {
+		counter-reset: eight;
+		list-style-type: none;
+	}
+
+	ol.eight > li:before {
+		position: absolute;
+		counter-increment: eight;
+		content: '(' counter(eight, lower-alpha) ')';
+
+		margin-left: -2.5em;
+		margin-right: 1em;
+	}
+
+
+
 </style>
