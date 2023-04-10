@@ -68,7 +68,11 @@ export default {
 								name: 'i'
 							},
 						]
-        }
+        },
+		exportWord:{
+			stylesheets: [ 'EDITOR_STYLES','./testcss.css' ],
+			fileName: 'my-document.docx'
+		},
       }
     }
   },
@@ -85,6 +89,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+@import './testcss.css';
+
 h3 {
   margin: 40px 0 0;
 }
@@ -101,72 +107,6 @@ a {
 } */
 
 
-.period-andList > li:nth-last-child(2)::after {
-		content: '; and';
-	}
-
-	.period-andList > li:last-child::after {
-		content: '.';
-	}
-
-	.period-andList > li:not(:nth-last-child(2)):not(:last-child):not(span)::after {
-		content: ';';
-	}
-
-
-  ol.four,
-	ol.eight {
-		counter-reset: four;
-		list-style-type: none;
-	}
-
-	ol.four > li:before,
-	ol.eight > li:before {
-		position: absolute;
-		counter-increment: four;
-		content: '(' counter(four, lower-roman) ')';
-
-		margin-left: -2.5em;
-		margin-right: 1em;
-	}
-
-  
-	ol.eight {
-		counter-reset: eight;
-		list-style-type: none;
-	}
-
-	ol.eight > li:before {
-		position: absolute;
-		counter-increment: eight;
-		content: '(' counter(eight, lower-alpha) ')';
-
-		margin-left: -2.5em;
-		margin-right: 1em;
-	}
-
-
-	
-.one > li::marker,.two > li::marker,.three > li::marker,.four > li::marker,.five > li::marker,.six > li::marker,.seven > li::marker,.eight > li::marker,.nine > li::marker{
-	content: '';
-}
-
-.ck-editor__editable .ck-list-bogus-paragraph{
-	display: unset !important;
-}
-
-.ck-editor__editable .ck-list-bogus-paragraph:has(> br){
-	display: -webkit-inline-box !important;
-}
-
-p:empty {
-  display:none
-}
-
-.ck-editor__top{
-	position: fixed !important;
-	bottom:0 !important;
-}
 
 
 </style>
