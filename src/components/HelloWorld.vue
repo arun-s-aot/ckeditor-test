@@ -5,6 +5,8 @@
       :editor="editor"
       v-model="editorData"
       :config="editorConfig"
+	  @ready="editorOnReady"
+	  @input="onEditorInput"
     ></ckeditor>
   </div>
 </template>
@@ -69,6 +71,14 @@ export default {
         }
       }
     }
+  },
+  methods:{
+	editorOnReady(editor){
+		console.log('editorOnReady----->',editor)
+	},
+	onEditorInput(editor){
+		console.log('onEditorInput==>',editor)
+	},
   }
 }
 </script>
@@ -135,6 +145,28 @@ a {
 		margin-right: 1em;
 	}
 
+
+	
+.one > li::marker,.two > li::marker,.three > li::marker,.four > li::marker,.five > li::marker,.six > li::marker,.seven > li::marker,.eight > li::marker,.nine > li::marker{
+	content: '';
+}
+
+.ck-editor__editable .ck-list-bogus-paragraph{
+	display: unset !important;
+}
+
+.ck-editor__editable .ck-list-bogus-paragraph:has(> br){
+	display: -webkit-inline-box !important;
+}
+
+p:empty {
+  display:none
+}
+
+.ck-editor__top{
+	position: fixed !important;
+	bottom:0 !important;
+}
 
 
 </style>
